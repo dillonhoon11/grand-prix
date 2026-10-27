@@ -3028,7 +3028,7 @@ function updateHostConn() {
   if (!hostActive) return;
   const n = relays.filter(r => r.connected).length;
   if (n === 0) setConn(relays.length ? "Connecting…" : "Offline", relays.length ? "warn" : "err");
-  else setConn(`Live · ${n}/${relays.length} servers`, "ok");
+  else setConn(`Room ${G.room.toUpperCase()} · Live ${n}/${relays.length}`, "ok");
   $("#connChip").title = relayTitle(relays);
 }
 function seatOfPid(pid) { return Object.keys(G.seats).find(id => G.seats[id].pid === pid) || null; }
@@ -3313,7 +3313,7 @@ function startPlayer() {
 }
 function updatePlayerConn() {
   const n = relaysP.filter(r => r.connected).length;
-  setConn(n ? "Connected" : "Connecting…", n ? "ok" : "warn");
+  setConn(`Room ${JOIN_ROOM.toUpperCase()} · ${n ? "Connected" : "Connecting…"}`, n ? "ok" : "warn");
   $("#connChip").title = relayTitle(relaysP);
   const d = $("#relayDiag");
   if (d) d.textContent = n
